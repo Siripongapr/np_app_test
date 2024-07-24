@@ -14,8 +14,12 @@ class SelectPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/menu');
                 },
-                child: Text('Test 1')),
-            ElevatedButton(onPressed: () {}, child: Text('Test 2'))
+                child: const Text('Test 1')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/receipt');
+                },
+                child: const Text('Test 2'))
           ],
         ),
       ),

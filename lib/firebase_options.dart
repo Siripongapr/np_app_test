@@ -66,4 +66,5 @@ class DefaultFirebaseOptions {
     projectId: 'np-app-teest',
     storageBucket: 'np-app-teest.appspot.com',
   );
+
 }
