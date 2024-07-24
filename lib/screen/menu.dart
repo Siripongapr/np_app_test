@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:np_app_test/widget/add_to_cart_button.dart';
+import 'package:np_app_test/widget/colors.dart';
 import 'package:np_app_test/widget/count_button.dart';
 import 'package:np_app_test/widget/custom_app_bar.dart';
 import 'package:np_app_test/widget/icon_with_text.dart';
@@ -14,6 +15,7 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   int _rating = 5;
   int _itemCount = 0;
+  int _maxLine = 3;
   String assetImage = 'assets/images/plate.webp';
   @override
   Widget build(BuildContext context) {
@@ -24,14 +26,20 @@ class _MenuState extends State<Menu> {
         children: [
           SizedBox(
             width: screenWidth,
+            height: screenHeight * 0.5,
             child: Image.asset(
               assetImage,
-              fit: BoxFit.contain,
+              fit: BoxFit.fitHeight,
             ),
           ),
-          const CustomAppBar(),
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: CustomAppBar(
+              itemCount: _itemCount,
+            ),
+          ),
           Positioned(
-            top: screenHeight * 0.35,
+            top: screenHeight * 0.44,
             child: Container(
               width: screenWidth,
               height: screenHeight,
@@ -49,71 +57,86 @@ class _MenuState extends State<Menu> {
                   ]),
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.1,
-                    vertical: screenHeight * 0.03),
+                    horizontal: screenWidth * 0.08,
+                    vertical: screenHeight * 0.04),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text('Fruit nutrition meal',
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold)),
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(5, (index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _rating = index + 1;
-                                  });
-                                },
-                                child: Icon(
-                                  _rating > index ? Icons.star : Icons.star,
-                                  color: _rating > index
-                                      ? Colors.green
-                                      : Colors.grey,
-                                  size: 20.0,
-                                ),
-                              );
-                            }),
+                          _ratingWidget(),
+                          const SizedBox(width: 15),
+                          const Text(
+                            '4.5',
+                            style: TextStyle(color: Colors.black26),
                           ),
                           const SizedBox(width: 10),
-                          const Text('4.5'),
-                          const SizedBox(width: 10),
-                          const Text('1287 comments')
+                          const Text('1287 comments',
+                              style: TextStyle(color: Colors.black26))
                         ],
                       ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconWithText(
-                            icon: Icons.circle_outlined,
-                            text: 'Normal',
-                          ),
-                          IconWithText(
-                            icon: Icons.location_on_outlined,
-                            text: '1.7 km',
-                          ),
-                          IconWithText(
-                            icon: Icons.update,
-                            text: '32min',
-                          ),
-                        ],
-                      ),
-                      const Text('Introduce'),
-                      const Text(
-                          'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'),
-                      TextButton(
-                        style: const ButtonStyle(
-                            padding: WidgetStatePropertyAll(EdgeInsets.zero)),
-                        onPressed: () {},
-                        child: const Row(
+                      const Padding(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Expand'),
-                            Icon(Icons.keyboard_arrow_down)
+                            IconWithText(
+                              icon: Icons.circle_outlined,
+                              text: 'Normal',
+                            ),
+                            IconWithText(
+                              icon: Icons.location_on_outlined,
+                              text: '1.7 km',
+                            ),
+                            IconWithText(
+                              icon: Icons.update,
+                              text: '32min',
+                            ),
                           ],
+                        ),
+                      ),
+                      const Text('Introduce',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 60, 60, 60))),
+                      const SizedBox(height: 15),
+                      Text(
+                        'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.8,
+                            color: Colors.black.withOpacity(0.5)),
+                        maxLines: _maxLine,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Visibility(
+                        visible: _maxLine == 3,
+                        child: TextButton(
+                          style: const ButtonStyle(
+                              padding: WidgetStatePropertyAll(EdgeInsets.zero)),
+                          onPressed: () {
+                            setState(() {
+                              _maxLine = 999;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Text('Expand',
+                                  style: TextStyle(
+                                      color: AppPalette.primaryGreen
+                                          .withOpacity(0.8),
+                                      fontSize: 15)),
+                              const Icon(
+                                Icons.keyboard_arrow_down,
+                                color: AppPalette.primaryGreen,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ]),
@@ -121,19 +144,19 @@ class _MenuState extends State<Menu> {
             ),
           ),
           Positioned(
-            top: screenHeight * 0.33,
+            top: screenHeight * 0.41,
             right: 30.0,
             child: SizedBox(
-              width: 40,
-              height: 40,
+              width: 45,
+              height: 45,
               child: FloatingActionButton(
                 shape: const CircleBorder(),
                 onPressed: () {},
-                backgroundColor: Colors.lightGreen,
+                backgroundColor: AppPalette.primaryGreen,
                 child: const Icon(
                   Icons.favorite,
                   color: Colors.white,
-                  size: 20,
+                  size: 23,
                 ),
               ),
             ),
@@ -158,7 +181,7 @@ class _MenuState extends State<Menu> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                    flex: 3,
+                    flex: 4,
                     child: CountButton(
                       onDecrement: () {
                         setState(() {
@@ -181,6 +204,27 @@ class _MenuState extends State<Menu> {
               ],
             ),
           )),
+    );
+  }
+
+  Row _ratingWidget() {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(5, (index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              _rating = index + 1;
+            });
+          },
+          child: Icon(
+            _rating > index ? Icons.star : Icons.star,
+            color: _rating > index ? AppPalette.primaryGreen : Colors.grey,
+            size: 15.0,
+          ),
+        );
+      }),
     );
   }
 }

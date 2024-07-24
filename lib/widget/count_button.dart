@@ -33,12 +33,18 @@ class CountButton extends StatelessWidget {
         children: [
           IconButton(
             onPressed: onDecrement,
-            icon: const Icon(Icons.remove),
+            color: Colors.grey,
+            icon: const Icon(
+              Icons.remove,
+            ),
           ),
-          Text(itemCount.toString()),
+          Text(itemCount.toString(), style: const TextStyle(fontSize: 20)),
           IconButton(
             onPressed: onIncrement,
-            icon: const Icon(Icons.add),
+            icon: const Icon(
+              Icons.add,
+              color: Colors.grey,
+            ),
           ),
         ],
       ),
