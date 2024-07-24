@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1054466873222",
+    "project_id": "np-app-teest",
+    "storage_bucket": "np-app-teest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054466873222:android:a2bfa42ec418fc61f8be07",
+        "android_client_info": {
+          "package_name": "com.example.np_app_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdRE45Fj6J0eC4_NzCbARzhAT8dgjKbSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
