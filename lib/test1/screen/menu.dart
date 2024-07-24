@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:np_app_test/widget/add_to_cart_button.dart';
-import 'package:np_app_test/widget/colors.dart';
-import 'package:np_app_test/widget/count_button.dart';
-import 'package:np_app_test/widget/custom_app_bar.dart';
-import 'package:np_app_test/widget/icon_with_text.dart';
+import 'package:np_app_test/test1/widget/add_to_cart_button.dart';
+import 'package:np_app_test/test1/widget/colors.dart';
+import 'package:np_app_test/test1/widget/count_button.dart';
+import 'package:np_app_test/test1/widget/custom_app_bar.dart';
+import 'package:np_app_test/test1/widget/icon_with_text.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});

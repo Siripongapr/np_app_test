@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:np_app_test/widget/app_bar_icon.dart';
+import 'package:np_app_test/test1/widget/app_bar_icon.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget {
@@ -17,6 +17,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       forceMaterialTransparency: true,
       actions: [
         Expanded(
@@ -26,6 +27,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppBarIcon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: Icons.chevron_left,
                   itemCount: widget.itemCount,
                 ),

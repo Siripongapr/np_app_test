@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:np_app_test/widget/colors.dart';
+import 'package:np_app_test/test1/widget/colors.dart';
 
 // ignore: must_be_immutable
 class AppBarIcon extends StatefulWidget {
-  AppBarIcon({super.key, required this.icon, this.itemCount = 0});
+  AppBarIcon(
+      {super.key, required this.icon, this.itemCount = 0, this.onPressed});
   final IconData icon;
   int itemCount;
+  void Function()? onPressed;
   @override
   State<AppBarIcon> createState() => _AppBarIconState();
 }
@@ -16,7 +18,7 @@ class _AppBarIconState extends State<AppBarIcon> {
     return Stack(children: [
       IconButton(
           icon: Icon(widget.icon),
-          onPressed: () {},
+          onPressed: widget.onPressed ?? () {},
           style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(Colors.white70),
           )),

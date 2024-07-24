@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:np_app_test/widget/colors.dart';
+import 'package:np_app_test/test1/widget/colors.dart';
 
 class IconWithText extends StatelessWidget {
   const IconWithText({

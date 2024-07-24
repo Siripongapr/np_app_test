@@ -1,6 +1,6 @@
 // ignore: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:np_app_test/widget/colors.dart';
+import 'package:np_app_test/test1/widget/colors.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({super.key, required this.itemCount});
